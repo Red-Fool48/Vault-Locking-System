@@ -1,0 +1,142 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\cores\\arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\variants\\standard"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_355995\\sketch\\firmataArd.ino.cpp",
+    "Include": "Servo.h",
+    "Includepath": "E:\\arduino-1.8.19\\libraries\\Servo\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_355995\\sketch\\firmataArd.ino.cpp",
+    "Include": "Wire.h",
+    "Includepath": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\libraries\\Wire\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_355995\\sketch\\firmataArd.ino.cpp",
+    "Include": "Firmata.h",
+    "Includepath": "E:\\arduino-1.8.19\\libraries\\Firmata"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_355995\\sketch\\firmataArd.ino.cpp",
+    "Include": "LiquidCrystal.h",
+    "Includepath": "C:\\Users\\Anirudh\\Documents\\Arduino\\libraries\\LiquidCrystal"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_355995\\sketch\\firmataArd.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Servo\\src\\avr\\Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Servo\\src\\mbed\\Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Servo\\src\\megaavr\\Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Servo\\src\\nrf52\\Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Servo\\src\\sam\\Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Servo\\src\\samd\\Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Servo\\src\\stm32f4\\Servo.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\libraries\\Wire\\src\\Wire.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\libraries\\Wire\\src\\utility\\twi.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\Firmata.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\FirmataMarshaller.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\FirmataParser.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\utility\\BLEStream.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\utility\\BluefruitLE_SPI_Stream.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\utility\\EthernetClientStream.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\utility\\EthernetServerStream.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\utility\\SerialFirmata.cpp",
+    "Include": "SoftwareSerial.h",
+    "Includepath": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\libraries\\SoftwareSerial\\src"
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\utility\\SerialFirmata.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\libraries\\Firmata\\utility\\WiFiStream.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\Documents\\Arduino\\libraries\\LiquidCrystal\\LiquidCrystal.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\libraries\\SoftwareSerial\\src\\SoftwareSerial.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]

@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+        <!-- Jquery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        
+</head>
+<body>
+    <main role="main" class="container">
+    <div class="content-section">
+        <div>
+            <fieldset class="form-group">
+                <br>
+                <h1>Registration Form</h1>
+                <br>
+                <div class="form-group">
+                    <div class="form-control-label">Name</div>
+                    <input type="text" class="form-control form-control-lg" name="name" id="name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="form-control-label">Username</div>
+                    <input type="text" class="form-control form-control-lg" name="username" id="username">
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="form-control-label">Email</div>
+                    <input type="email" class="form-control form-control-lg" name="email" id="email">
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="form-control-label">Password</div>
+                    <input type="password" class="form-control form-control-lg" name="password" id="password">
+                </div>
+            </fieldset>
+            <input type="button" value="submit" id="submit" onclick="sendData()">
+        </div>
+    </div>
+    </main>
+    <script>
+        const sendData=()=>
+        {
+            const name=document.getElementById('name').value;
+            const username=document.getElementById('username').value;
+            const email=document.getElementById('email').value;
+            const password=document.getElementById('password').value;
+            const dataToSend={'name':name,'username':username,'password':password,'email':email};
+            $.ajax
+            ({
+                type:'POST',
+                url:'/',
+                contentType:'application/json',
+                dataType:'json',
+                data:JSON.stringify(dataToSend),
+                success:(data)=> {console.log('ok!',data)},
+                error: (err)=>console.log(err)
+            })
+            
+            console.log(dataToSend)
+            console.log(JSON.stringify(dataToSend))
+        }
+        
+    </script>
+</body>
+</html>
