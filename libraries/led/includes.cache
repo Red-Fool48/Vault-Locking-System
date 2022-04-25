@@ -1,0 +1,52 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\cores\\arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\variants\\standard"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_342664\\sketch\\sketch_jan11b.ino.cpp",
+    "Include": "SoftwareSerial.h",
+    "Includepath": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\libraries\\SoftwareSerial\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_342664\\sketch\\sketch_jan11b.ino.cpp",
+    "Include": "BlynkSimpleStream.h",
+    "Includepath": "C:\\Users\\Anirudh\\Documents\\Arduino\\libraries\\blynk-library-master\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\AppData\\Local\\Temp\\arduino_build_342664\\sketch\\sketch_jan11b.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "E:\\arduino-1.8.19\\hardware\\arduino\\avr\\libraries\\SoftwareSerial\\src\\SoftwareSerial.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\Documents\\Arduino\\libraries\\blynk-library-master\\src\\utility\\BlynkDebug.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\Documents\\Arduino\\libraries\\blynk-library-master\\src\\utility\\BlynkHandlers.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\Documents\\Arduino\\libraries\\blynk-library-master\\src\\utility\\BlynkTimer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\Anirudh\\Documents\\Arduino\\libraries\\blynk-library-master\\src\\utility\\utility.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
