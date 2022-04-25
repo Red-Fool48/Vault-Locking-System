@@ -68,16 +68,22 @@ def postData():
     password = request.get_json()['password']
 
     print(name, username, email, password)
+    id = -1
     mycursor.execute(
-        "select username, password, pin from iot.vaultMapping where username=%s and password=%s", (username, password))
-    for (username, password, pin) in mycursor:
+        "select id,username, password, pin from iot.vaultMapping where username=%s and password=%s", (username, password))
+    for (username, password, pin, id) in mycursor:
         print(username, pin, password)
         print(pin)
+        id = id
         pinNo = int(pin)
     if pinNo != -1:
         arduino.digital[pinNo].write(1)
+        query = "update table iot.vaultMapping set pinStatus=1 where id=%s"
+        mycursor.execute(query, (id))
         time.sleep(500)
         arduino.digital[pinNo].write(0)
+        query = "update table iot.vaultMapping set pinStatus=0 where id=%s"
+        mycursor.execute(query, (id))
     return render_template('asyncLogin.html')
 
 

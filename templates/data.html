@@ -1,0 +1,49 @@
+{% extends "layout.html" %} {% block content %}
+<style>
+  th:tr {
+    color: blue;
+  }
+  tr:nth-of-type(2n) {
+    border: 1px solid black;
+    background-color: rgba(150, 150, 150, 0.5);
+  }
+
+  td {
+    padding: 8px 8px;
+    border: 1px solid black;
+  }
+</style>
+<div class="content-section">
+  <h1>All Users Data</h1>
+  <br />
+  <table>
+    <tr>
+      <td>Name [1st 10 chars]</td>
+      <td>Username</td>
+      <td>Email</td>
+      <td>Pin</td>
+    </tr>
+    {% for i in range(0,len): %}
+    <tr>
+      <!-- <h3><p>Name</p></h3> -->
+      <td>{{data[i]['name']}}</td>
+      <!-- <h3><p>Username</p></h3> -->
+      <td>{{data[i]['username']}}</td>
+      <!-- <h3><p>Email</p></h3> -->
+      <td>{{data[i]['email']}}</td>
+      <!-- <h3><p>Password</p></h3>     -->
+      <td>{{data[i]['pin']}}</td>
+      <td>
+        <a
+          class="btn btn-outline-info"
+          href="{{ url_for('handleRequest',id=data[i].id) }}"
+        >
+          View the data!
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br />
+</div>
+{% endblock content %}

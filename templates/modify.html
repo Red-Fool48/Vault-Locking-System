@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <h1>User data</h1><br>
+     <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <br>
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label") }}
+
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg",value=data['username']) }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg",value=data['email']) }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.pin.label(class="form-control-label") }}
+                {% if form.pin.errors %}
+                    {{ form.pin(class="form-control form-control-lg is-invalid",value=data['pin']) }}
+                    <div class="invalid-feedback">
+                        {% for error in form.pin.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.pin(class="form-control form-control-lg",value=data['pin']) }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info",value="Modify!") }}
+        </div>
+    </form>
+    <div class="form-group">
+        <a class="btn btn-outline-info" href="{{ url_for('getAllData') }}">View all data</a><br>
+    </div>
+
+</div>
+{% endblock content %}

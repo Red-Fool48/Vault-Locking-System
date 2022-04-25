@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block content %}
+Welcome! {{name}}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="form-group">
+        <a class="btn btn-outline-info" href="{{ url_for('adminLogout') }}">Log out</a><br>
+    </div>
+</nav>
+<br>
+<div class="form-group">
+    <div class="form-group">
+        <a class="btn btn-outline-info" href="{{ url_for('getAllData') }}">View all data</a><br>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-outline-info" href="{{ url_for('showAllPins') }}">View all pins</a><br>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block content %}
+<style>
+  th:tr {
+    color: blue;
+  }
+  tr:nth-of-type(2n) {
+    border: 1px solid black;
+    background-color: rgba(150, 150, 150, 0.5);
+  }
+
+  td {
+    padding: 8px 8px;
+    border: 1px solid black;
+  }
+</style>
+<div class="content-section">
+  <div class="form-group">
+    <div class="form-group">
+        <a class="btn btn-outline-info" href="{{ url_for('login') }}">View all data</a><br>
+    </div>
+  </div>
+  <h1>All Pins</h1>
+  <br />
+  <table>
+    <tr>
+      <td>Pin number</td>
+    </tr>
+    {% for i in range(0,len): %}
+    <tr>
+      <td>{{i+2}}</td>
+      <td>
+        <a
+          class="btn btn-outline-info"
+          href="{{ url_for('switchOn',id=data[i].id) }}"
+        >
+          Switch Pin On
+        </a>
+      </td>
+      <td>
+        <a
+          class="btn btn-outline-info"
+          href="{{ url_for('switchOff',id=data[i].id) }}"
+        >
+          Switch Pin Off
+        </a>
+      </td>
+      
+    </tr>
+    {% endfor %}
+  </table>
+  <br />
+</div>
+{% endblock content %}
