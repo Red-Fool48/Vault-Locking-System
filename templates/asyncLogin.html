@@ -12,7 +12,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         
 </head>
-<body>
+<body style="background-color:darkslategrey;color:white">
     <main role="main" class="container">
     <div class="content-section">
         <div>
@@ -22,17 +22,17 @@
                 <br>
                 <div class="form-group">
                     <div class="form-control-label">Name</div>
-                    <input type="text" class="form-control form-control-lg" name="name" id="name">
+                    <input type="text" class="form-control form-control-lg" name="name" id="name" style="background-color:whitesmoke;color:black">
                 </div>
                 <br>
                 <div class="form-group">
                     <div class="form-control-label">Username</div>
-                    <input type="text" class="form-control form-control-lg" name="username" id="username">
+                    <input type="text" class="form-control form-control-lg" name="username" id="username" style="background-color:whitesmoke;color:black">
                 </div>
                 <br>
                 <div class="form-group">
                     <div class="form-control-label">Email</div>
-                    <input type="email" class="form-control form-control-lg" name="email" id="email">
+                    <input type="email" class="form-control form-control-lg" name="email" id="email" style="background-color:whitesmoke;color:black">
                 </div>
                 <br>
                 <div class="form-group">
@@ -40,7 +40,7 @@
                     <input type="password" class="form-control form-control-lg" name="password" id="password">
                 </div>
             </fieldset>
-            <input type="button" value="submit" id="submit" onclick="sendData()">
+            <input type="button" value="submit" id="submit" class="btn btn-outline-info" onclick="sendData()">
         </div>
     </div>
     </main>
@@ -65,6 +65,10 @@
             
             console.log(dataToSend)
             console.log(JSON.stringify(dataToSend))
+            document.getElementById('password').value=''
+            document.getElementById('name').value=''
+            document.getElementById('email').value='';
+            document.getElementById('username').value='';
         }
         
     </script>

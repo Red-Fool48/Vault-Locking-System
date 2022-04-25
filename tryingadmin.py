@@ -101,42 +101,72 @@ app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
 Session(app)
 
+# user login:
+# @app.route('/', methods=['GET'])
+# def getData():
+#     form = inpForm()
+#     return render_template('home.html', form=form)
+
+# user login processing:
+# @app.route('/', methods=['POST'])
+# def postData():
+#     try:
+#         pinNo = -1
+#         form = inpForm()
+#         id = -1
+#         username, password = form.username.data, form.password.data
+#         mycursor.execute(
+#             "select id, username, password, pin from iot.vaultMapping where username=%s and password=%s", (username, password))
+#         l = []
+#         for (id, username, password, pin) in mycursor:
+#             print(username, pin, password)
+#             print(pin)
+#             temp = {}
+#             temp['pin'] = int(pin)
+#             pinNo = int(pin)
+#             id = id
+#             l.append(temp)
+#         if pinNo != -1:
+#             arduino.digital[pinNo].write(1)
+#             time.sleep(500)
+#             arduino.digital[pinNo].write(0)
+#             # arduino.send_sysex(
+#             #     STRING_DATA, util.str_to_two_byte_iter('SUCCESS!\n'))
+#             return render_template('home.html', form=form, flash='LoggedIn!')
+#         else:
+#             return render_template('home.html', form=form)
+#     except Exception as e:
+#         print('err!', e)
+
+# USER LOGIN:
+
 
 @app.route('/', methods=['GET'])
 def getData():
-    form = inpForm()
-    return render_template('home.html', form=form)
+    return render_template('asyncLogin.html')
 
 
 @app.route('/', methods=['POST'])
 def postData():
-    try:
-        pinNo = -1
-        form = inpForm()
-        id = -1
-        username, password = form.username.data, form.password.data
-        mycursor.execute(
-            "select id, username, password, pin from iot.vaultMapping where username=%s and password=%s", (username, password))
-        l = []
-        for (id, username, password, pin) in mycursor:
-            print(username, pin, password)
-            print(pin)
-            temp = {}
-            temp['pin'] = int(pin)
-            pinNo = int(pin)
-            id = id
-            l.append(temp)
-        if pinNo != -1:
-            arduino.digital[pinNo].write(1)
-            time.sleep(500)
-            arduino.digital[pinNo].write(0)
-            # arduino.send_sysex(
-            #     STRING_DATA, util.str_to_two_byte_iter('SUCCESS!\n'))
-            return render_template('home.html', form=form, flash='LoggedIn!')
-        else:
-            return render_template('home.html', form=form)
-    except Exception as e:
-        print('err!', e)
+    postedData = request.get_json()
+    name = request.get_json()['name']
+    username = request.get_json()['username']
+    email = request.get_json()['email']
+    password = request.get_json()['password']
+    id = -1
+    pinNo = -1
+    mycursor.execute(
+        "select id, pin from iot.vaultMapping where username=%s and password=%s", (username, password))
+    for (id, pin) in mycursor:
+        id = id
+        pinNo = int(pin)
+        print(id, pinNo)
+    if pinNo != -1:
+        arduino.digital[pinNo].write(1)
+        time.sleep(500)
+        arduino.digital[pinNo].write(0)
+    return render_template('asyncLogin.html')
+
 
 # admin Login
 
@@ -245,26 +275,53 @@ def adminLogout():
 
 @app.route('/admin/ViewAllPins', methods=['GET'])
 def showAllPins():
-    data = []
-    for i in range(2, 13):
-        temp = {}
-        temp['id'] = i
-        data.append(temp)
-    return render_template('viewAllPinStatus.html', data=data, len=len(data))
+    if session.get('adminLoggedIn'):
+        data = []
+        for i in range(2, 13):
+            temp = {}
+            temp['id'] = i
+            data.append(temp)
+        return render_template('viewAllPinStatus.html', data=data, len=len(data))
+    return redirect('getData')
 
 
 @app.route('/admin/switchOn/<id>', methods=['GET', 'POST'])
 def switchOn(id):
-    print(id)
-    arduino.digital[int(id)].write(1)
-    return redirect(url_for('showAllPins'))
+    if session.get('adminLoggedIn'):
+        print(id)
+        arduino.digital[int(id)].write(1)
+        return redirect(url_for('showAllPins'))
+    return redirect('getData')
 
 
 @app.route('/admin/switchOff/<id>', methods=['GET', 'POST'])
 def switchOff(id):
-    print(id)
-    arduino.digital[int(id)].write(0)
-    return redirect(url_for('showAllPins'))
+    if session.get('adminLoggedIn'):
+        print(id)
+        arduino.digital[int(id)].write(0)
+        return redirect(url_for('showAllPins'))
+    return redirect('getData')
+
+
+@app.route('/admin/addUser', methods=['POST', 'GET'])
+def handleAddUser():
+    if session.get('adminLoggedIn'):
+        if request.method == 'POST':
+            try:
+                form = addUserForm()
+                username, password, name, pin, email = form.username.data, form.password.data, form.name.data, form.pin.data, form.email.data
+                if pin > 13 or pin < 2:
+                    raise Exception('Bad pin!')
+                query = 'insert into iot.vaultMapping(username,password,name,pin,email) values(%s,%s,%s,%s,%s)'
+                mycursor.execute(query, (username, password, name, pin, email))
+                mydb.commit()
+                return redirect(url_for('login'))
+            except Exception as err:
+                print(err)
+        elif request.method == 'GET':
+            form = addUserForm()
+            return render_template('addNewUser.html', form=form)
+    return redirect('getData')
 
 
 if __name__ == "__main__":
