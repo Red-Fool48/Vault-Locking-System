@@ -10,6 +10,12 @@ from pyfirmata import Arduino, util, STRING_DATA, SERVO, INPUT
 import time
 from flask_session import Session
 import mysql.connector
+import base64
+import hashlib
+from Crypto import Random
+from Crypto.Cipher import AES
+# AES key
+key = '1234567890ABCDEF0'
 arduino = Arduino('COM1')
 for i in range(2, 7):
     # arduino.pinmode(i, OUTPUT)
@@ -94,6 +100,32 @@ class modifyForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
+class AESCipher(object):
+
+    def __init__(self, key):
+        self.bs = AES.block_size
+        self.key = hashlib.sha256(key.encode()).digest()
+
+    def encrypt(self, raw):
+        raw = self._pad(raw)
+        iv = Random.new().read(AES.block_size)
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return base64.b64encode(iv + cipher.encrypt(raw.encode()))
+
+    def decrypt(self, enc):
+        enc = base64.b64decode(enc)
+        iv = enc[:AES.block_size]
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return self._unpad(cipher.decrypt(enc[AES.block_size:])).decode('utf-8')
+
+    def _pad(self, s):
+        return s + (self.bs - len(s) % self.bs) * chr(self.bs - len(s) % self.bs)
+
+    @staticmethod
+    def _unpad(s):
+        return s[:-ord(s[len(s)-1:])]
+
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'C2HWGVoMGfNTBsrYQg8EcMrdTimkZfAb'
@@ -153,10 +185,11 @@ def postData():
     username = request.get_json()['username']
     email = request.get_json()['email']
     password = request.get_json()['password']
+    C = AESCipher(key)
     id = -1
     pinNo = -1
     mycursor.execute(
-        "select id, pin from iot.vaultMapping where username=%s and password=%s", (username, password))
+        "select id, pin from iot.vaultMapping where (username=%s and password=%s) or (username=%s and password=%s)", (username, password, username, C.encrypt(password)))
     for (id, pin) in mycursor:
         id = id
         pinNo = int(pin)
@@ -182,9 +215,10 @@ def login():
             username = form.username.data
             password = form.password.data
             try:
+                C = AESCipher(key)
                 mycursor.execute('use iot')
                 mycursor.execute(
-                    "select * from iot.admin where username=%s and password=%s", (username, password))
+                    "select * from iot.admin where (username=%s and password=%s) or (username=%s and password=%s)", (username, password, username, C.encrypt(password)))
                 session['adminLoggedIn'] = True
                 session['username'] = username
                 return render_template('admin.html', name=username)
@@ -224,16 +258,19 @@ def handleRequest(id):
     if not session.get('adminLoggedIn') and request.method == 'GET':
         return redirect(url_for('getData'))
     if request.method == 'POST' and session.get('adminLoggedIn'):
-        form = modifyForm()
-        if int(form.pin.data) < 2 or int(form.pin.data) > 13:
-            return redirect(url_for('handleRequest'), id=id)
-        else:
-            # if data modified successfully:
-            query = 'update iot.vaultMapping set username=%s, email=%s, pin=%s where id=%s'
-            mycursor.execute(query, (form.username.data,
-                             form.email.data, form.pin.data, id))
-            mydb.commit()
-            return redirect(url_for('getAllData'))
+        try:
+            form = modifyForm()
+            if int(form.pin.data) < 2 or int(form.pin.data) > 13:
+                return redirect(url_for('handleRequest', id=id))
+            else:
+                # if data modified successfully:
+                query = 'update iot.vaultMapping set username=%s, email=%s, pin=%s where id=%s'
+                mycursor.execute(query, (form.username.data,
+                                         form.email.data, form.pin.data, id))
+                mydb.commit()
+                return redirect(url_for('getAllData'))
+        except:
+            return redirect(url_for('handleRequest', id=id))
     elif request.method == 'GET' and session.get('adminLoggedIn'):
         query = 'select username, email, pin from iot.vaultMapping where id={}'.format(
             id)
@@ -246,10 +283,10 @@ def handleRequest(id):
             temp['pin'] = pin
             temp['id'] = id
             res.append(temp)
-            break
+            # break
         print(res)
         form = modifyForm()
-        return render_template('modify.html', form=form, data=res)
+        return render_template('modify.html', form=form, data=res[0])
     else:
         return redirect(url_for('getData'))
 
@@ -308,8 +345,10 @@ def handleAddUser():
     if session.get('adminLoggedIn'):
         if request.method == 'POST':
             try:
+                C = AESCipher(key)
                 form = addUserForm()
-                username, password, name, pin, email = form.username.data, form.password.data, form.name.data, form.pin.data, form.email.data
+                username, password, name, pin, email = form.username.data, C.encrypt(
+                    form.password.data), form.name.data, form.pin.data, form.email.data
                 if pin > 13 or pin < 2:
                     raise Exception('Bad pin!')
                 query = 'insert into iot.vaultMapping(username,password,name,pin,email) values(%s,%s,%s,%s,%s)'
@@ -320,7 +359,14 @@ def handleAddUser():
                 print(err)
         elif request.method == 'GET':
             form = addUserForm()
-            return render_template('addNewUser.html', form=form)
+            pins = []
+            query = 'select pin from iot.vaultMapping'
+            mycursor.execute(query)
+            for (pin) in mycursor:
+                temp = {}
+                temp['pin'] = pin
+                pins.append(temp)
+            return render_template('addNewUser.html', form=form, pins=pins, len=len(pins))
     return redirect('getData')
 
 
