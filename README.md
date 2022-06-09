@@ -35,10 +35,10 @@ View All Users' data:
   ![adminUserMgmt](https://user-images.githubusercontent.com/62154803/172768322-7c0db134-699a-420e-b82e-c41860df0f0d.png)
 <br />
 Manage all the pins/vaults:
-  ![adminPinMgmt](https://user-images.githubusercontent.com/62154803/172768652-d2a4c88b-a447-47b0-8c5b-ac89fd3c9161.png)
-
+  <br />![adminPinMgmt](https://user-images.githubusercontent.com/62154803/172768652-d2a4c88b-a447-47b0-8c5b-ac89fd3c9161.png)
+<br />
   Modification:
-    ![pinModification](https://user-images.githubusercontent.com/62154803/172768865-4c002712-f558-4f62-970d-094082cdc67a.png)
-
+   <br /> ![pinModification](https://user-images.githubusercontent.com/62154803/172768865-4c002712-f558-4f62-970d-094082cdc67a.png)
+<br />
 Add new user:
-  ![addUser](https://user-images.githubusercontent.com/62154803/172768961-1ce94119-248c-4d20-a942-d9b9b83cf8e8.png)
+  <br />![addUser](https://user-images.githubusercontent.com/62154803/172768961-1ce94119-248c-4d20-a942-d9b9b83cf8e8.png)
