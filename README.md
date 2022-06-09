@@ -29,10 +29,10 @@ Successful login:
 <h3> Admin side </h3>
 
 Admin Panel:
-  ![adminPanel](https://user-images.githubusercontent.com/62154803/172768152-a1cf87b2-309e-4c28-91d6-61bea5a74897.png)
-
+  <br />![adminPanel](https://user-images.githubusercontent.com/62154803/172768152-a1cf87b2-309e-4c28-91d6-61bea5a74897.png)
+<br>
 View All Users' data:
-  ![adminUserMgmt](https://user-images.githubusercontent.com/62154803/172768322-7c0db134-699a-420e-b82e-c41860df0f0d.png)
+  <br>![adminUserMgmt](https://user-images.githubusercontent.com/62154803/172768322-7c0db134-699a-420e-b82e-c41860df0f0d.png)
 <br />
 Manage all the pins/vaults:
   <br />![adminPinMgmt](https://user-images.githubusercontent.com/62154803/172768652-d2a4c88b-a447-47b0-8c5b-ac89fd3c9161.png)
