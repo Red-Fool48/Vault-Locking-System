@@ -5,12 +5,10 @@ The system is a door locking system which uses arduino and python to make openin
 The idea was further used to simulate a bank vault locking system
 
 <h2> Methodology </h2>
-● In the proposed methodology, there are effectively 2 types of users: admin and
-regular customer
-● A different login will be shown to each of the two users. The admin route is
-hidden i.e. it is not visible to the regular.
-● The proposed system is to be placed in the localised environment of the bank
-● The proposed design is as follows:
+● In the proposed methodology, there are effectively 2 types of users: admin and regular customer<br />
+● A different login will be shown to each of the two users. The admin route is hidden i.e. it is not visible to the regular.<br />
+● The proposed system is to be placed in the localised environment of the bank<br />
+● The proposed design is as follows:<br />
   For the user side:
   ![user-side](https://user-images.githubusercontent.com/62154803/172767781-179b24fc-c48f-4570-938c-23f08455b8a0.png)
   For the admin side:
