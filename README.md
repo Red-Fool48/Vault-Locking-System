@@ -17,9 +17,10 @@ The idea was further used to simulate a bank vault locking system
 <h2> Outputs </h2>
 
 <h3> Users' side </h3>
-
 Login: 
-  ![login](https://user-images.githubusercontent.com/62154803/172767949-e3ef7042-277c-4770-a45f-91e5b64925c2.png)
+  <br />
+  ![login](https://user-images.githubusercontent.com/62154803/172767949-e3ef7042-277c-4770-a45f-91e5b64925c2.png) 
+  <br />
 Successful login:
   ![successLogin](https://user-images.githubusercontent.com/62154803/172768072-798da50b-156c-42b0-b340-ba7edc9fd7d1.png)
 
@@ -27,15 +28,15 @@ Successful login:
 
 Admin Panel:
   ![adminPanel](https://user-images.githubusercontent.com/62154803/172768152-a1cf87b2-309e-4c28-91d6-61bea5a74897.png)
-
+<br />
 View All Users' data:
   ![adminUserMgmt](https://user-images.githubusercontent.com/62154803/172768322-7c0db134-699a-420e-b82e-c41860df0f0d.png)
-
+<br />
 Manage all the pins/vaults:
   ![adminPinMgmt](https://user-images.githubusercontent.com/62154803/172768652-d2a4c88b-a447-47b0-8c5b-ac89fd3c9161.png)
-  
+  <br />
   Modification:
     ![pinModification](https://user-images.githubusercontent.com/62154803/172768865-4c002712-f558-4f62-970d-094082cdc67a.png)
-
+<br />
 Add new user:
   ![addUser](https://user-images.githubusercontent.com/62154803/172768961-1ce94119-248c-4d20-a942-d9b9b83cf8e8.png)
