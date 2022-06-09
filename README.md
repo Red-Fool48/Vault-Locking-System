@@ -22,10 +22,10 @@ The idea was further used to simulate a bank vault locking system
 Login: 
 
   ![login](https://user-images.githubusercontent.com/62154803/172767949-e3ef7042-277c-4770-a45f-91e5b64925c2.png) 
- 
+ <br>
 Successful login:
-  ![successLogin](https://user-images.githubusercontent.com/62154803/172768072-798da50b-156c-42b0-b340-ba7edc9fd7d1.png)
-
+ <br>![successLogin](https://user-images.githubusercontent.com/62154803/172768072-798da50b-156c-42b0-b340-ba7edc9fd7d1.png)
+<br>
 <h3> Admin side </h3>
 
 Admin Panel:
