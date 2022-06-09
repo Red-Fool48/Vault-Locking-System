@@ -12,9 +12,10 @@ The idea was further used to simulate a bank vault locking system
 
   For the user side: 
 ![user-side](https://user-images.githubusercontent.com/62154803/172767781-179b24fc-c48f-4570-938c-23f08455b8a0.png)
+  <br />
   For the admin side:
   ![admin-side](https://user-images.githubusercontent.com/62154803/172767822-86812da7-298f-4949-9adc-57bc83cceeb0.png)
-
+<br />
 <h2> Outputs </h2>
 
 <h3> Users' side </h3>
